@@ -1,5 +1,6 @@
 package com.learn.amigoscode.api;
 
+import com.learn.amigoscode.exception.ApiRequestException;
 import com.learn.amigoscode.model.Person;
 import com.learn.amigoscode.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ public class PersonController {
 
     @GetMapping
     public List<Person> getAllPeople(){
-        return personService.getAllPeople();
+        throw new ApiRequestException("Oop cannot get all person with custom exception");
+//        throw new IllegalStateException("Oop cannot get all person");
+//        return personService.getAllPeople();
     }
 
     @GetMapping(path = "/{id}")
